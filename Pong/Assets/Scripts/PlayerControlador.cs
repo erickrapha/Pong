@@ -2,17 +2,17 @@ using UnityEngine;
 
 public class PlayerControlador : MonoBehaviour
 {
-    public float moveSpeed;
+    public float moveSpeed = 10.0f;
     public Vector2 minBounds;
     public Vector2 maxBounds;
     public bool isPlayerOne = true;
     
     private Rigidbody2D rig;
     
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
+        rig.bodyType = RigidbodyType2D.Kinematic;
     }
     void FixedUpdate()
     {
@@ -28,10 +28,8 @@ public class PlayerControlador : MonoBehaviour
             if (Input.GetKey(KeyCode.UpArrow)) input = 1.0f;
             else if (Input.GetKey(KeyCode.DownArrow)) input = -1.0f;
         }
-        Vector2 velocity = new Vector2(0, input * moveSpeed);
-        rig.linearVelocity = velocity;
-        
         Vector2 pos = transform.position;
+        pos.y += input * moveSpeed *Time.deltaTime;
         pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
         transform.position = pos;
         

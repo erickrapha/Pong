@@ -22,9 +22,16 @@ public class Ball : MonoBehaviour
     }
     public void ResetBall(Vector2 position)
     {
-        transform.position = position;
         rig.linearVelocity = Vector2.zero;
-        Invoke(nameof(LaunchBall), 1.0f);
+        rig.angularVelocity = 0.0f;
         
+        rig.position = position;
+
+        StartCoroutine(RestartAfterDelay(1.0f));
+    }
+    private System.Collections.IEnumerator RestartAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        LaunchBall();
     }
 }

@@ -9,7 +9,7 @@ public class PlayerControlador : MonoBehaviour
     
     private Rigidbody2D rig;
     
-    void Start()
+    void Awake()
     {
         rig = GetComponent<Rigidbody2D>();
         rig.bodyType = RigidbodyType2D.Kinematic;
@@ -28,10 +28,12 @@ public class PlayerControlador : MonoBehaviour
             if (Input.GetKey(KeyCode.UpArrow)) input = 1.0f;
             else if (Input.GetKey(KeyCode.DownArrow)) input = -1.0f;
         }
-        Vector2 pos = transform.position;
-        pos.y += input * moveSpeed *Time.deltaTime;
+        Vector2 pos = rig.position;
+        pos.y += input * moveSpeed * Time.fixedDeltaTime;
+        
         pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
-        transform.position = pos;
+        
+        rig.MovePosition(pos);
         
     }
 }

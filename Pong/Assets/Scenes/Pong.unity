@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 42488333}
   m_Layer: 0
   m_Name: PlayerOcidental
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 1298353834}
   m_Layer: 0
   m_Name: PlayerOriental
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
